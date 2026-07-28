@@ -88,5 +88,71 @@
 
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+students = []
+
+def add_student():
+    name = input("Student name: ")
+    id = input("Student ID: ")
+
+    scores = []  
+    students_score = int(input("How many scores? "))
+    for i in range(students_score):
+        score = float(input(f"Enter score {i + 1}: "))
+        scores.append(score)
+
+    student = {
+        "name": name,
+        "id": id,
+        "scores": scores
+    }
+    
+    students.append(student)
+    print(f'Student "{name}" added successfully.\n') 
+
+def display_allstudents():
+    if len(students) == 0:
+        print("No students have been added yet.")
+        return
+    print("-" * 70)
+    print(f"{'Name':<20}{'ID':<15}{'Scores':<20}{'Average'}")
+    print("-" * 70)
+
+    for s in students:
+        avg = round(sum(s["scores"]) / len(s["scores"]), 2)
+        scores_str = ", ".join(str(sc) for sc in s["scores"])
+        print(f'{s["name"]:<20}{s["id"]:<15}{scores_str:<20}{avg}')
+
+    print("-" * 70)
+def calculate_average():
+    id = input("Enter student ID: ")
+    for student in students:
+        if student["id"] == id:
+            avg = round(sum(student["scores"]) / len(student["scores"]), 2)
+            print(f"{student['name']}'s average score: {avg}")
+            return
+    print("Student ID not found.")
+
+# Main menu
+while True:
+    print("\n================================")
+    print("   STUDENT RECORD SYSTEM MENU")
+    print("================================")
+    print("1. Add student")
+    print("2. Display all students")
+    print("3. Calculate average score")
+    print("4. Quit")
+
+    choice = input("Enter your choice (1-4): ")
+
+    if choice == '1':
+        add_student()
+    elif choice == '2':
+        display_allstudents()
+    elif choice == '3':
+        calculate_average()
+    elif choice == '4':
+        print("program ended!")
+        break
+    else:
+        print("Invalid choice.please enter a number in the required range (1-4).")
 

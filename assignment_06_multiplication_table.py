@@ -53,5 +53,33 @@
 #
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+def dennis_table():
+    n = int(input("Enter a number: "))
+
+    print(f"\nMultiplication Table for {n}:\n")
+
+    for i in range(1, 13):
+        print(f"{n} x {i} = {n * i}")
+
+print("-----------------------------")
+
+# Function for 2nd multiplication
+def tables_to_n():
+    n = int(input("\nEnter a positive integer: "))
+
+    if n <= 0:
+        print("Error: Please enter a positive integer.")
+        return
+
+    for number in range(1, n + 1):
+        print(f"\nMultiplication Table for {number}:\n")
+
+        for i in range(1, 13):
+            print(f"{number} x {i} = {number * i}")
+
+       
+
+# the program
+dennis_table()
+tables_to_n()
 
